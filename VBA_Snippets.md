@@ -291,4 +291,107 @@ Public Function GetLastColumn(sheetName As String) As Long
 End Function
 ```
 
+## Copy & Paste Over Existing Row / Column ##
 
+This will copy row 1 and paste it into the existing row 5:
+```vb
+Range("1:1").Copy Range("5:5")
+This will copy column C and paste it into column E:
+Range("C:C").Copy Range("E:E")
+```
+From <https://www.automateexcel.com/vba/copy-column-row>
+
+## Copy & Insert Row / Column ##
+
+Instead you can insert the copied row or column and shift the existing rows or columns to make room.
+This will copy row 1 and insert it into row 5, shifting the existing rows down:
+```vb
+Range("1:1").Copy
+Range("5:5").Insert
+```
+This will copy column C and insert it into column E, shifting the existing columns to the right:
+```vb
+Range("C:C").Copy
+Range("E:E").Insert
+```
+
+## Copy Entire Row ##
+
+Below we will show you several ways to copy row 1 and paste into row 5.
+```vb
+Range("1:1").Copy Range("5:5")
+Range("A1").EntireRow.Copy Range("A5")
+Rows(1).Copy Rows(5)
+```
+
+## Cut and Paste Rows ##
+
+Simply use Cut instead of Copy to cut and paste rows:
+```vb
+Rows(1).Cut Rows(5)
+```
+
+## Copy Multiple Rows ##
+
+Here are examples of copying multiple rows at once:
+```vb
+Range("5:7").Copy Range("10:13")
+Range("A5:A7").EntireRow.Copy Range("A10:A13")
+Rows(5:7).Copy Rows(10:13)
+```
+From <https://www.automateexcel.com/vba/copy-column-row> 
+
+
+## Copy Entire Column ##
+
+You can copy entire columns similarily to copying entire rows:
+```vb
+Range("C:C").Copy Range("E:E")
+Range("C1").EntireColumn.Copy Range("C1").EntireColumn
+Columns(3).Copy Range(5)
+```
+## Cut and Paste Columns ##
+
+Simply use Cut instead of Copy to cut and paste columns:
+```vb
+Range("C:C").Cut Range("E:E")
+```
+
+## Copy Multiple Columns ##
+
+Here are examples of copying multiple columns at once:
+```vb
+Range("C:E").Copy Range("G:I")
+Range("C1:E1").EntireColumn.Copy Range("G1:I1")
+Columns(3:5).Copy Columns(7:9)
+```
+
+## Copy Rows or Columns to Another Sheet ##
+
+To copy to another sheet, simply use the Sheet Object:
+```vb
+Sheets("sheet1").Range("C:E").Copy Sheets("sheet2").Range("G:I")
+```
+From <https://www.automateexcel.com/vba/copy-column-row> 
+
+## Cut Rows or Columns to Another Sheet ##
+
+You can use the exact same technique to cut and paste rows or columns to another sheet.
+```vb
+Sheets("sheet1").Range("C:E").Cut Sheets("sheet2").Range("G:I")
+```
+From <https://www.automateexcel.com/vba/copy-column-row>
+
+
+## VBA Open a file dialog ##
+
+```vb
+Dim fDialog As FileDialog
+Set fDialog = Application.FileDialog(msoFileDialogFilePicker)
+ 
+'Show the dialog. -1 means success!
+If fDialog.Show = -1 Then
+   Debug.Print fDialog.SelectedItems(1) 'The full path to the file selected by the user
+End If
+```
+From <https://analystcave.com/vba-application-filedialog-select-file/>
