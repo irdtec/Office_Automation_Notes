@@ -1,2 +1,2 @@
-# Excel_VBA_Notes
-Snippets and tips on Excel VBA macros and automation
+# Office Automation noes
+Code snippets and tips from MS office automation tasks, from VBA, Office Scripts, Power Automate flows and more.
