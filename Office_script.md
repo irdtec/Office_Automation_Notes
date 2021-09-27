@@ -6,7 +6,7 @@ Office Script takes syntax from **TypeScript**
 ## Read and log one cell
 
 This sample reads the value of A1 and prints it to the console.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get the current worksheet.
   let selectedSheet = workbook.getActiveWorksheet();
@@ -21,8 +21,8 @@ function main(workbook: ExcelScript.Workbook) {
 ## Read the active cell
 
 This script logs the value of the current active cell. If multiple cells are selected, the top-leftmost cell will be logged.
-TypeScriptCopy
-```
+
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get the current active cell in the workbook.
   let cell = workbook.getActiveCell();
@@ -34,7 +34,7 @@ function main(workbook: ExcelScript.Workbook) {
 ## Change an adjacent cell
 
 This script gets adjacent cells using relative references. Note that if the active cell is on the top row, part of the script fails, because it references the cell above the currently selected one.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get the currently active cell in the workbook.
   let activeCell = workbook.getActiveCell();
@@ -59,7 +59,7 @@ function main(workbook: ExcelScript.Workbook) {
 
 This script copies the formatting in the active cell to the neighboring cells. Note that this script only works when the active cell isn't on an edge of the worksheet.
 
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get the active cell.
   let activeCell = workbook.getActiveCell();
@@ -78,7 +78,7 @@ function main(workbook: ExcelScript.Workbook) {
 ## Change each individual cell in a range
 
 This script loops over the currently select range. It clears the current formatting and sets the fill color in each cell to a random color.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get the currently selected range.
   let range = workbook.getSelectedRange();
@@ -102,7 +102,7 @@ function main(workbook: ExcelScript.Workbook) {
 ## Get groups of cells based on special criteria
 
 This script gets all the blank cells in the current worksheet's used range. It then highlights all those cells with a yellow background.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
     // Get the current used range.
     let range = workbook.getActiveWorksheet().getUsedRange();
@@ -121,7 +121,7 @@ These samples work with collections of objects in the workbook.
 ## Iterate over collections
 
 This script gets and logs the names of all the worksheets in the workbook. It also sets the their tab colors to a random color.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get all the worksheets in the workbook.
   let sheets = workbook.getWorksheets();
@@ -144,7 +144,7 @@ function main(workbook: ExcelScript.Workbook) {
 ## Query and delete from a collection
 
 This script creates a new worksheet. It checks for an existing copy of the worksheet and deletes it before making a new sheet.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Name of the worksheet to be added.
   let name = "Index";
@@ -171,7 +171,7 @@ function main(workbook: ExcelScript.Workbook) {
 
 The samples in this section show how to use the JavaScript Date object.
 The following sample gets the current date and time and then writes those values to two cells in the active worksheet.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get the cells at A1 and B1.
   let dateRange = workbook.getActiveWorksheet().getRange("A1");
@@ -186,7 +186,7 @@ function main(workbook: ExcelScript.Workbook) {
 ```
 
 The next sample reads a date that's stored in Excel and translates it to a JavaScript Date object. It uses the date's numeric serial number as input for the JavaScript Date.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Read a date at cell A1 from Excel.
   let dateRange = workbook.getActiveWorksheet().getRange("A1");
@@ -204,7 +204,7 @@ These samples demonstrate how to work with worksheet data and provide users with
 ## Apply conditional formatting
 
 This sample applies conditional formatting to the currently used range in the worksheet. The conditional formatting is a green fill for the top 10% of values.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get the current worksheet.
   let selectedSheet = workbook.getActiveWorksheet();
@@ -223,7 +223,7 @@ function main(workbook: ExcelScript.Workbook) {
 ## Create a sorted table
 
 This sample creates a table from the current worksheet's used range, then sorts it based on the first column.
-```
+```tsx
 function main(workbook: ExcelScript.Workbook) {
   // Get the current worksheet.
   let selectedSheet = workbook.getActiveWorksheet();
@@ -240,7 +240,8 @@ From <https://docs.microsoft.com/en-us/office/dev/scripts/resources/samples/exce
 
 ## Sample code: Insert comma-separated values into a workbook [read a CSV File/Content]
 
-```
+You can pass the complete CSV string and let the function parse the string
+```tsx
 function main(workbook: ExcelScript.Workbook, csv: string) {
   /* Convert the CSV data into a 2D array. */
   // Trim the trailing new line.
